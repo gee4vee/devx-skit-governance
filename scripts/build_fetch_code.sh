@@ -11,6 +11,7 @@ export DEVX_GIT_URL=https://github.com/$DEVX_GIT.git
 export DEVX_GIT_URL_RAW=https://raw.githubusercontent.com/$DEVX_GIT
 export DEVX_GIT_URL_CODE=https://codeload.github.com/$DEVX_GIT
 # eventually this will be hard-coded in each pipeline's env variables
+# other values will be knative or cf
 export DEPLOY_TARGET=helm
 
 echo "GIT_URL=${GIT_URL}" >> $ARCHIVE_DIR/build.properties
