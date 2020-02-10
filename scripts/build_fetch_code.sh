@@ -6,11 +6,19 @@ mkdir -p $ARCHIVE_DIR
 cp -R -n ./ $ARCHIVE_DIR/ || true
 
 # Record git info
+export DEVX_GIT=gee4vee/devx-skit-governance
+export DEVX_GIT_URL=https://github.com/$DEVX_GIT.git
+export DEVX_GIT_URL_RAW=https://raw.githubusercontent.com/$DEVX_GIT
+export DEVX_GIT_URL_CODE=https://codeload.github.com/$DEVX_GIT
+# eventually this will be hard-coded in each pipeline's env variables
+export DEPLOY_TARGET=helm
+
 echo "GIT_URL=${GIT_URL}" >> $ARCHIVE_DIR/build.properties
 echo "GIT_BRANCH=${GIT_BRANCH}" >> $ARCHIVE_DIR/build.properties
 echo "GIT_COMMIT=${GIT_COMMIT}" >> $ARCHIVE_DIR/build.properties
 echo "SOURCE_BUILD_NUMBER=${BUILD_NUMBER}" >> $ARCHIVE_DIR/build.properties
 echo "DEVX_GIT_URL=${DEVX_GIT_URL}" >> $ARCHIVE_DIR/build.properties
+echo "DEPLOY_TARGET=${DEPLOY_TARGET}" >> $ARCHIVE_DIR/build.properties
 cat $ARCHIVE_DIR/build.properties
 
 # check if doi is integrated in this toolchain
@@ -26,4 +34,4 @@ pwd
 echo "ls -al *"
 ls -al
 
-source <(curl -sSL "https://raw.githubusercontent.com/gee4vee/devx-skit-governance/master/scripts/asset_download.sh" $GIT_URL)
+source <(curl -sSL "$DEVX_GIT_URL_RAW/master/scripts/asset_download.sh")
