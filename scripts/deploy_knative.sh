@@ -2,7 +2,6 @@
 export PATH="downloads:$PATH"
 
 # View build properties
-source build.properties
 cat build.properties
 
 echo "Check cluster availability"
