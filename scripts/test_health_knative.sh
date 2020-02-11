@@ -6,6 +6,7 @@ TEMP_URL=$( kubectl get ksvc/${KUBE_SERVICE_NAME} -o json | jq '.status.url' )
 TEMP_URL=${TEMP_URL%\"} # remove end quote
 TEMP_URL=${TEMP_URL#\"} # remove beginning quote
 export APPLICATION_URL=$TEMP_URL
+echo "Checking app @ $APPLICATION_URL..."
 
 if [ "$(curl -is $APPLICATION_URL --connect-timeout 3 --max-time 5 --retry 2 --retry-max-time 30 | head -n 1 | grep 200)" != "" ]; then
   echo "Successfully reached health endpoint at $APPLICATION_URL"
