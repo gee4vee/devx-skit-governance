@@ -21,6 +21,10 @@ echo "APP_PORT=${APP_PORT}"
 # To review or change build options use:
 # ibmcloud cr build --help
 
+# Git repo cloned at $WORKING_DIR, copy into $ARCHIVE_DIR
+mkdir -p $ARCHIVE_DIR
+cp -R -n ./ $ARCHIVE_DIR/ || true
+
 echo "GIT_URL=${GIT_URL}" >> $ARCHIVE_DIR/build.properties
 echo "GIT_BRANCH=${GIT_BRANCH}" >> $ARCHIVE_DIR/build.properties
 echo "GIT_COMMIT=${GIT_COMMIT}" >> $ARCHIVE_DIR/build.properties
@@ -54,9 +58,6 @@ export PIPELINE_IMAGE_URL="$REGISTRY_URL/$REGISTRY_NAMESPACE/$IMAGE_NAME:$BUILD_
 
 echo "=========================================================="
 echo "COPYING ARTIFACTS needed for deployment and testing (in particular build.properties)"
-
-echo "Checking archive dir presence"
-mkdir -p $ARCHIVE_DIR
 
 # Persist env variables into a properties file (build.properties) so that all pipeline stages consuming this
 # build as input and configured with an environment properties file valued 'build.properties'
