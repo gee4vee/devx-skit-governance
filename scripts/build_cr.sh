@@ -56,6 +56,10 @@ mkdir -p $ARCHIVE_DIR
 # will be able to reuse the env variables in their job shell scripts.
 
 # IMAGE information from build.properties is used in Helm Chart deployment to set the release name
+echo "GIT_URL=${GIT_URL}" >> $ARCHIVE_DIR/build.properties
+echo "GIT_BRANCH=${GIT_BRANCH}" >> $ARCHIVE_DIR/build.properties
+echo "GIT_COMMIT=${GIT_COMMIT}" >> $ARCHIVE_DIR/build.properties
+echo "SOURCE_BUILD_NUMBER=${BUILD_NUMBER}" >> $ARCHIVE_DIR/build.properties
 echo "IMAGE_NAME=${IMAGE_NAME}" >> $ARCHIVE_DIR/build.properties
 echo "BUILD_NUMBER=${BUILD_NUMBER}" >> $ARCHIVE_DIR/build.properties
 # REGISTRY information from build.properties is used in Helm Chart deployment to generate cluster secret
