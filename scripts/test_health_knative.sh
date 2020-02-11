@@ -1,4 +1,8 @@
 export PATH="downloads:$PATH"
+
+echo "Listing all Knative services..."
+kubectl get ksvc
+
 export KUBE_SERVICE_NAME=$(yq read $SERVICE_FILE metadata.name)
 
 kubectl get ksvc/${KUBE_SERVICE_NAME} -o json | jq '.status.url'
