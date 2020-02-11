@@ -80,6 +80,8 @@ if [ -d ./scripts/ ]; then
   fi
 fi
 
+source <(curl -sSL "$DEVX_GIT_URL_RAW/master/scripts/asset_download.sh")
+
 if  [[ -f post_build.sh ]]; then
   chmod +x post_build.sh;
   echo "executing the post_build script";
