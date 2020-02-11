@@ -13,5 +13,5 @@ spec:
             - name: service_cloudant
               valueFrom:
                 secretKeyRef:
-                  name: governator-cloudant
+                  name: binding-governator-cloudant
                   key: binding
