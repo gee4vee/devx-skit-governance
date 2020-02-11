@@ -5,8 +5,7 @@ PATH="downloads:$PATH"
 echo "kubectl version"
 kubectl version --client
 
-source ./build.properties
-
+# Record git info
 echo "Build environment variables:"
 echo "REGISTRY_URL=${REGISTRY_URL}"
 echo "REGISTRY_NAMESPACE=${REGISTRY_NAMESPACE}"
@@ -63,6 +62,12 @@ echo "BUILD_NUMBER=${BUILD_NUMBER}" >> $ARCHIVE_DIR/build.properties
 echo "REGISTRY_URL=${REGISTRY_URL}" >> $ARCHIVE_DIR/build.properties
 echo "REGISTRY_NAMESPACE=${REGISTRY_NAMESPACE}" >> $ARCHIVE_DIR/build.properties
 echo "APP_PORT=${APP_PORT}" >> $ARCHIVE_DIR/build.properties
+# these are defined as environment properties in the stage configuration
+echo "DEVX_GIT=${DEVX_GIT}" >> $ARCHIVE_DIR/build.properties
+echo "DEVX_GIT_URL=${DEVX_GIT_URL}" >> $ARCHIVE_DIR/build.properties
+echo "DEVX_GIT_URL_RAW=${DEVX_GIT_URL_RAW}" >> $ARCHIVE_DIR/build.properties
+echo "DEVX_GIT_URL_CODE=${DEVX_GIT_URL_CODE}" >> $ARCHIVE_DIR/build.properties
+echo "DEPLOY_TARGET=${DEPLOY_TARGET}" >> $ARCHIVE_DIR/build.properties
 
 echo "File 'build.properties' created for passing env variables to subsequent pipeline jobs:"
 cat $ARCHIVE_DIR/build.properties
