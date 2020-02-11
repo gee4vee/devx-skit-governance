@@ -36,4 +36,4 @@ istio:
   weight: 100
 services:
   cloudant:
-    secretKeyRef: binding-nodejs-cloudant-code-cloudant-1580482808439
+    secretKeyRef: binding-governator-cloudant
