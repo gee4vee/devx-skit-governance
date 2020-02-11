@@ -109,6 +109,7 @@ echo "Application status URL: $TEMP_URL"
 TEMP_URL=${TEMP_URL%\"} # remove end quote
 TEMP_URL=${TEMP_URL#\"} # remove beginning quote
 export APPLICATION_URL=$TEMP_URL
+echo "Checking app @ $APPLICATION_URL..."
 if [ -z "$APPLICATION_URL" ]; then
   echo "Deploy failed, no URL found for knative service"
   exit 1
