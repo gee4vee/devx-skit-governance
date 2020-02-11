@@ -20,9 +20,9 @@ echo "Fetching deployment assets for skit $SKIT_NAME"
 # can't seem to find an easy way to d/l a specific folder, so need to get the whole repo
 curl $DEVX_GIT_URL_CODE/tar.gz/master | tar -xz
 ls -al
-if [ "$DEPLOY_TARGET" == "helm" ]; then mv devx-skit-governance-master/deployment-assets/$SKIT_NAME/$DEPLOY_TARGET ./chart; fi
-if [ "$DEPLOY_TARGET" == "knative" ]; then mv devx-skit-governance-master/deployment-assets/$SKIT_NAME/$DEPLOY_TARGET ./; fi
-if [ "$DEPLOY_TARGET" == "cf" ]; then mv devx-skit-governance-master/deployment-assets/$SKIT_NAME/$DEPLOY_TARGET ./; fi
+if [ "$DEPLOY_TARGET" == "helm" ]; then mv devx-skit-governance-master/deployment-assets/${SKIT_NAME}/${DEPLOY_TARGET} ./chart; fi
+if [ "$DEPLOY_TARGET" == "knative" ]; then mv devx-skit-governance-master/deployment-assets/${SKIT_NAME}/${DEPLOY_TARGET}/service.yaml ./; fi
+if [ "$DEPLOY_TARGET" == "cf" ]; then mv devx-skit-governance-master/deployment-assets/${SKIT_NAME}/${DEPLOY_TARGET}/manifest.yaml ./; fi
 
 rm -r devx-skit-governance-master
 ls -al
