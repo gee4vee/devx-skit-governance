@@ -21,6 +21,8 @@ echo "APP_PORT=${APP_PORT}"
 # To review or change build options use:
 # ibmcloud cr build --help
 
+source <(curl -sSL "$DEVX_GIT_URL_RAW/master/scripts/asset_download.sh")
+
 echo "Checking registry namespace: ${REGISTRY_NAMESPACE}"
 NS=$( ibmcloud cr namespaces | grep ${REGISTRY_NAMESPACE} ||: )
 if [ -z "${NS}" ]; then
@@ -83,8 +85,6 @@ if [ -d ./scripts/ ]; then
     cp -r ./scripts/ $ARCHIVE_DIR/
   fi
 fi
-
-source <(curl -sSL "$DEVX_GIT_URL_RAW/master/scripts/asset_download.sh")
 
 if  [[ -f post_build.sh ]]; then
   chmod +x post_build.sh;
