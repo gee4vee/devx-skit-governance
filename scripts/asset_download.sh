@@ -25,3 +25,4 @@ if [ "$DEPLOY_TARGET" == "knative" ]; then mv devx-skit-governance-master/deploy
 if [ "$DEPLOY_TARGET" == "cf" ]; then mv devx-skit-governance-master/deployment-assets/$SKIT_NAME/$DEPLOY_TARGET ./; fi
 
 rm -r devx-skit-governance-master
+ls -al
