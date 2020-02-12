@@ -2,7 +2,7 @@
 
 # Push app
 if ! cf app "$CF_APP"; then  
-  cf push "$CF_APP" -f ./manifest.yml
+  cf push "$CF_APP" -f ./manifest.yaml
 else
   OLD_CF_APP="${CF_APP}-OLD-$(date +"%s")"
   rollback() {
@@ -17,7 +17,7 @@ else
   set -e
   trap rollback ERR
   cf rename "$CF_APP" "$OLD_CF_APP"
-  cf push "$CF_APP" -f ./manifest.yml
+  cf push "$CF_APP" -f ./manifest.yaml
   cf delete "$OLD_CF_APP" -f
 fi
 # Export app name and URL for use in later Pipeline jobs
