@@ -20,7 +20,6 @@ spec:
     metadata:
       labels:
         app: "{{  .Chart.Name }}"
-        chart: '{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}'
         version: "current"
     spec:
       containers:
