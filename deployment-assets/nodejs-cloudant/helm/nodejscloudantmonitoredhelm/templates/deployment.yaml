@@ -10,7 +10,6 @@ spec:
   selector:
     matchLabels:
       app: "{{  .Chart.Name }}"
-      name: "{{  .Chart.Name }}-deployment"
   strategy:
     type: RollingUpdate
     rollingUpdate:
