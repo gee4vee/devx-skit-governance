@@ -21,7 +21,7 @@ spec:
     metadata:
       labels:
         app: "{{  .Chart.Name }}"
-        version: "current"
+        version: current
     spec:
       containers:
       - name: "{{  .Chart.Name  }}"
