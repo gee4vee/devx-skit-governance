@@ -7,15 +7,15 @@ metadata:
     app: "{{  .Chart.Name }}"
 spec:
   replicas: {{ .Values.replicaCount }}
-  selector:
-    matchLabels:
-      app: "{{  .Chart.Name }}"
   strategy:
     type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 0
       maxSurge: 1
   revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
+  selector:
+    matchLabels:
+      app: "{{  .Chart.Name }}"
   template:
     metadata:
       labels:

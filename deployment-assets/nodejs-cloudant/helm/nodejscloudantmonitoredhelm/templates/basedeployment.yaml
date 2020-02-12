@@ -7,15 +7,15 @@ metadata:
     chart: '{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}'
 spec:
   replicas: {{ .Values.base.replicaCount }}
-  selector:
-    matchLabels:
-      chart: '{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}'
   strategy:
     type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 0
       maxSurge: 1
   revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
+  selector:
+    matchLabels:
+      chart: '{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}'
   template:
     metadata:
       labels:
