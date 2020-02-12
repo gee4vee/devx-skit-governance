@@ -3,6 +3,8 @@
 # uncomment to debug the script
 # set -x
 
+ls -al
+
 # copy the script below into your app code repo (e.g. ./scripts/check_and_deploy_helm.sh) and 'source' it from your pipeline job
 #    source ./scripts/check_and_deploy_helm.sh
 # alternatively, you can source it from online script:
