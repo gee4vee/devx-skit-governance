@@ -2,6 +2,7 @@
 
 # get manifest
 source <(curl -sSL "$DEVX_GIT_URL_RAW/master/scripts/asset_download.sh")
+ls -al
 
 # Push app
 if ! cf app "$CF_APP"; then  
