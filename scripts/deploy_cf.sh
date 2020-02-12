@@ -1,7 +1,11 @@
 #!/bin/bash
+
+# get manifest
+source <(curl -sSL "$DEVX_GIT_URL_RAW/master/scripts/asset_download.sh")
+
 # Push app
 if ! cf app "$CF_APP"; then  
-  cf push "$CF_APP"
+  cf push "$CF_APP" -f ./manifest.yml
 else
   OLD_CF_APP="${CF_APP}-OLD-$(date +"%s")"
   rollback() {
@@ -16,11 +20,12 @@ else
   set -e
   trap rollback ERR
   cf rename "$CF_APP" "$OLD_CF_APP"
-  cf push "$CF_APP"
+  cf push "$CF_APP" -f ./manifest.yml
   cf delete "$OLD_CF_APP" -f
 fi
 # Export app name and URL for use in later Pipeline jobs
 export CF_APP_NAME="$CF_APP"
 export APP_URL=http://$(cf app $CF_APP_NAME | grep -e urls: -e routes: | awk '{print $2}')
+
 # View logs
-#cf logs "${CF_APP}" --recent
+cf logs "${CF_APP}" --recent
