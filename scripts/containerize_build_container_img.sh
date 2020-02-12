@@ -16,3 +16,7 @@
 source <(curl -sSL "https://raw.githubusercontent.com/open-toolchain/commons/master/scripts/build_image.sh")
 
 ls -al
+
+# copy build props to root dir build props
+cat $ARCHIVE_DIR/build.properties >> ./build.properties
+cat build.properties
