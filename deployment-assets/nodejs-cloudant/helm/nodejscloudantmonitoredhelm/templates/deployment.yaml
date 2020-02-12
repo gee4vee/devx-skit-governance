@@ -7,6 +7,10 @@ metadata:
     app: "{{  .Chart.Name }}"
 spec:
   replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: "{{  .Chart.Name }}"
+      name: "{{  .Chart.Name }}-deployment"
   strategy:
     type: RollingUpdate
     rollingUpdate:
