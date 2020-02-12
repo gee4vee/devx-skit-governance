@@ -4,8 +4,6 @@ set -x
 # This script expects the GIT_URL env var to contain the URL to the skit git repo,
 # from which the deployment assets folder will be extracted.
 
-source build.properties
-
 echo "Directory * "
 pwd
 echo "ls -al *"
