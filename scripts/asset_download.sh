@@ -22,7 +22,10 @@ ls -al devx-skit-governance-master/deployment-assets/${SKIT_NAME}/${DEPLOY_TARGE
 
 if [ "${DEPLOY_TARGET}" == "helm" ]; then mv devx-skit-governance-master/deployment-assets/${SKIT_NAME}/${DEPLOY_TARGET} ./chart; fi
 if [ "${DEPLOY_TARGET}" == "knative" ]; then mv devx-skit-governance-master/deployment-assets/${SKIT_NAME}/${DEPLOY_TARGET}/service.yaml ./; fi
-if [ "${DEPLOY_TARGET}" == "cf" ]; then mv devx-skit-governance-master/deployment-assets/${SKIT_NAME}/${DEPLOY_TARGET}/manifest.yaml ./; fi
+if [ "${DEPLOY_TARGET}" == "cf" ]; then 
+    mv devx-skit-governance-master/deployment-assets/${SKIT_NAME}/${DEPLOY_TARGET}/manifest.yaml ./;
+    mv devx-skit-governance-master/deployment-assets/${SKIT_NAME}/${DEPLOY_TARGET}/mappings.json ./server/config/;
+fi
 
 rm -r devx-skit-governance-master
 ls -al
